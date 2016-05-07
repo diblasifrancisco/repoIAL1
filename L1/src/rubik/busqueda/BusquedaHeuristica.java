@@ -29,6 +29,8 @@ public abstract class BusquedaHeuristica extends RendimientoBusqueda {
                          * agregar h (heurisitica)
                          y f (funcion de evaluacion)que es igual al costo de camino + h
                          */
+                        n.setHeuristica(h.obtenerHeuristica(n));
+                        n.setFuncionEv(n.getCosto(), n.getHeuristica());
 
       if(!listaCerrada.containsKey(n.getEstado())) {
         expandidos.add(n);

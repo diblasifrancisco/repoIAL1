@@ -4,17 +4,21 @@ import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.Vector;
 
+/**clase abastracta que será implementada por todas aquellas búsquedas que implementen heuristicas para llegar al objetivo*/
 public abstract class BusquedaHeuristica extends RendimientoBusqueda {
 
   HashMap<Estado, NodoBusqueda> listaCerrada;
   LinkedList<NodoBusqueda> listaAbierta;
   //TrazaGenerica traza;
+  /** nuevo objeto de tipo heuristica*/
   Heuristica h = new Heuristica1();
 
+  /**setea la heuristica a utilizar*/
   public void setHeuristica(Heuristica heuristica) {
     this.h = heuristica;
   }
-
+  
+/**genera la sucesores de un nodo y dependiendo la heuristica la seta en el nodo*/
  protected LinkedList<NodoBusqueda> expandirNodo(NodoBusqueda nodoPadre) {
     LinkedList<NodoBusqueda> expandidos = new LinkedList<NodoBusqueda>();
     for(Operador oper : nodoPadre.getEstado().operadoresAplicables()) {
@@ -34,6 +38,7 @@ public abstract class BusquedaHeuristica extends RendimientoBusqueda {
     return expandidos;
   }
 
+ /**genera el camino solucion mediante la búsqueda sucesiva desde el nodo objetivo pasando por su padre, y del padre de este, hasta llegar al inicial*/
   protected Vector<Operador> encontrarCamino(NodoBusqueda nodoFinal) {
     Vector<Operador> camino = new Vector<Operador>();
     NodoBusqueda nodoPaso = nodoFinal;

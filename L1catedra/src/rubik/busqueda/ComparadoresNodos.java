@@ -29,4 +29,13 @@ public class ComparadoresNodos {
             return h1.compareTo(h2);
         }
     };
+    
+    public static Comparator<NodoBusqueda> COSTO = new Comparator<NodoBusqueda>() {
+        @Override
+        public int compare(NodoBusqueda o1, NodoBusqueda o2) {
+            Integer h1 = new Integer(o1.getCosto());
+            Integer h2 = new Integer(o2.getCosto());
+            return h1.compareTo(h2);
+        }
+    };
 }

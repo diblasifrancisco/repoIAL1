@@ -9,7 +9,7 @@ public class BusquedaAEstrella extends BusquedaHeuristica implements Busqueda {
 
     @Override
     public Vector<Operador> buscarSolucion(Estado inicial) {
-        reporteInicioBusqueda();
+        this.reporteInicioBusqueda();
         listaCerrada = new HashMap<Estado, NodoBusqueda>();
         listaAbierta = new LinkedList<NodoBusqueda>();
         Boolean solucionEncontrada = false;
@@ -20,7 +20,7 @@ public class BusquedaAEstrella extends BusquedaHeuristica implements Busqueda {
         /*  asigno heuriristica  */
         nodoActual.setHeuristica(h.obtenerHeuristica(nodoActual));
         nodoActual.setFuncionEv(0, nodoActual.getHeuristica());
-        
+
         TrazaGenerica traza = new TrazaGenerica(nodoActual);
         listaAbierta.add(nodoActual);
         while (!solucionEncontrada) {
@@ -32,26 +32,29 @@ public class BusquedaAEstrella extends BusquedaHeuristica implements Busqueda {
                  * tomo y elimino el primer elemento de la listal
                  */
                 nodoActual = getNodoMenorFnEvaluacionListaAbierta();
-                
+
                 reporteNodosExplorados();  //Antes de evaluar si el nodo es solución contabilizo nodos explorados
                 if (!listaCerrada.containsKey(nodoActual.getEstado())) {
                     if (nodoActual.getEstado().esFinal()) {
                         solucionEncontrada = true;
                         nodoSolucion = nodoActual;
-                        
-                        reporteNodosExplorados();
                     } else {
                         listaCerrada.put(nodoActual.getEstado(), nodoActual);
                         listaAbierta.addAll(expandirNodo(nodoActual));
-                        
+
                         traza.imprimirFinalIteracion(nodoActual, listaAbierta);
-                        
+
                         ordenarListaFnEvaluacion();
                     }
                 }
             }
         }
-        /*  reportes de rendimiento  */
+        /*reportes de rendimiento */
+        // al terminar contabilizo nodos sobrantes con la clase RendimientoBusqueda
+        this.reporteNodosSobrantes(listaAbierta.size());
+        // Contabilizo tiempo al finalizar busqueda con la clase RendimientoBusqueda
+        this.reporteFinBusqueda();
+        System.out.println(this.getReporteCompleto());
         if (nodoSolucion == null) {
             return new Vector<Operador>();
         } else {

@@ -24,7 +24,7 @@ public class BusquedaVoraz extends BusquedaHeuristica implements Busqueda {
         break;
       }
       else {
-	//traza.imprimirInicioIteracion(listaAbierta);  //muestro  estado de lista abirta al coienzo de la primer interación
+	traza.imprimirInicioIteracion(listaAbierta);  //muestro  estado de lista abirta al coienzo de la primer interación
         nodoActual = listaAbierta.pollFirst();      /** tomo y elimino el primer elemento de la listal*/
         reporteNodosExplorados();  //Antes de evaluar si el nodo es solución contabilizo nodos explorados
         if(!listaCerrada.containsKey(nodoActual.getEstado())) {

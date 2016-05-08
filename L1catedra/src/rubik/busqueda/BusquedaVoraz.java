@@ -9,6 +9,9 @@ public class BusquedaVoraz extends BusquedaHeuristica implements Busqueda {
 
   public Vector<Operador> buscarSolucion(Estado inicial){
     /*inicio reporte de busqueda */
+   this.reporteInicioBusqueda();
+
+      
     listaCerrada = new HashMap<Estado, NodoBusqueda>();
     listaAbierta = new LinkedList<NodoBusqueda>();
     Boolean solucionEncontrada = false;
@@ -41,6 +44,13 @@ public class BusquedaVoraz extends BusquedaHeuristica implements Busqueda {
       }
     }
     /*reportes de rendimiento */
+     // al terminar contabilizo nodos sobrantes con la clase RendimientoBusqueda
+    this.reporteNodosSobrantes(listaAbierta.size());
+    // Contabilizo tiempo al finalizar busqueda con la clase RendimientoBusqueda
+    this.reporteFinBusqueda();
+    System.out.println(this.getReporteCompleto());
+    
+    
     if(nodoSolucion == null) {
       return new Vector<Operador>();
     }

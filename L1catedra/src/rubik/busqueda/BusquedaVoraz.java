@@ -24,8 +24,20 @@ public class BusquedaVoraz extends BusquedaHeuristica implements Busqueda {
         break;
       }
       else {
-	traza.imprimirInicioIteracion(listaAbierta);
-        /*  estrategia voraz en grafo con heurisitica  cambia la forma en que ordena la lista  */
+	//traza.imprimirInicioIteracion(listaAbierta);  //muestro  estado de lista abirta al coienzo de la primer interación
+        nodoActual = listaAbierta.pollFirst();      /** tomo y elimino el primer elemento de la listal*/
+        reporteNodosExplorados();  //Antes de evaluar si el nodo es solución contabilizo nodos explorados
+        if(!listaCerrada.containsKey(nodoActual.getEstado())) {
+          if(nodoActual.getEstado().esFinal()) {
+            solucionEncontrada = true;
+            nodoSolucion = nodoActual;
+          }
+          else {
+            listaCerrada.put(nodoActual.getEstado(), nodoActual);
+            listaAbierta.addAll(expandirNodo(nodoActual));
+            ordenarListaMenorHeuristica();
+          }
+        }
       }
     }
     /*reportes de rendimiento */

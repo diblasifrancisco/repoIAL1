@@ -17,14 +17,14 @@ public class BusquedaVoraz extends BusquedaHeuristica implements Busqueda {
 		nodoActual.setProfundidad(0);
 		nodoActual.setCosto(0);
     nodoActual.setHeuristica(h.obtenerHeuristica(nodoActual));
-		//traza = new TrazaGenerica(nodoActual);
+		TrazaGenerica traza = new TrazaGenerica(nodoActual);
     listaAbierta.add(nodoActual);
     while(!solucionEncontrada) {
       if(listaAbierta.size() == 0) {
         break;
       }
       else {
-	//traza.imprimirInicioIteracion(listaAbierta);
+	traza.imprimirInicioIteracion(listaAbierta);
         /*  estrategia voraz en grafo con heurisitica  cambia la forma en que ordena la lista  */
       }
     }

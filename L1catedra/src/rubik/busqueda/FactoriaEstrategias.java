@@ -52,31 +52,30 @@ public class FactoriaEstrategias {
           case 6:
                 System.out.println("\nBUSQUEDA PROFUNDIDAD INTERACTIVA EN GRAFO");
                 busq =  new BusquedaProfundidadIterativaG(); break; 
-          
-          // para cada caso se instancia la clase correspondiente a la implementacion
-	  // de cada estrategia, con cada una de las dos heuristica
+
            case 7:
                 System.out.println("\nBUSQUEDA VORAZ EN GRAFO con HEURISITCA 1");
                 busq = new BusquedaVoraz();
                ((BusquedaHeuristica)busq).setHeuristica(new Heuristica1()); //asigno la H1
                 break; 
            case 8:
-                /*  BUSQUEDA VORAZ EN GRAFO con HEURISITCA 2 */
-                break;
-           case 9:
-                /*  BUSQUEDA A* EN GRAFO con HEURISITCA 1  */
-                break;
-           case 10:
-                /*  BUSQUEDA A* EN GRAFO con HEURISITCA 2  */
-                break; 
-           case 11:
-                /*  BUSQUEDA IDA* EN GRAFO con HEURISITCA 1  */
-                break;
-           case 12:
-                /*  BUSQUEDA IDA* EN GRAFO con HEURISITCA 1  */
+                System.out.println("\nBUSQUEDA VORAZ EN GRAFO con HEURISITCA 2");
+                busq = new BusquedaVoraz();
+               ((BusquedaHeuristica)busq).setHeuristica(new Heuristica2()); //asigno la H2
                 break; 
                 
-           default:  busq = null;
+           case 9:
+               System.out.println("\nBUSQUEDA A* EN GRAFO con HEURISITCA 1");
+                busq = new BusquedaAEstrella();
+               ((BusquedaHeuristica)busq).setHeuristica(new Heuristica1()); //asigno la H1
+                break; 
+           case 10:
+               System.out.println("\nBUSQUEDA A* EN GRAFO con HEURISITCA 2");
+                busq = new BusquedaAEstrella();
+               ((BusquedaHeuristica)busq).setHeuristica(new Heuristica2()); //asigno la H2
+                break; 
+
+           
         }
         return busq;
     } 

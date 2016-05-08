@@ -1,4 +1,4 @@
-package rubik.busqueda;
+/**package rubik.busqueda;
 
 import java.util.HashMap;
 import java.util.LinkedList;
@@ -92,7 +92,7 @@ public class BusquedaAEstrellaLimitada extends BusquedaHeuristica implements Bus
      * anteriores, compara ese elemento con todos los elementos anteriores antes
      * de continuar con la siguiente comparación
      */
-    private void ordenarListaFnEvaluacion() {
+   /** private void ordenarListaFnEvaluacion() {
         LinkedList<NodoBusqueda> lista = listaAbierta;
         int i, j;
         int N = lista.size();
@@ -107,3 +107,4 @@ public class BusquedaAEstrellaLimitada extends BusquedaHeuristica implements Bus
 
     }
 }
+*/

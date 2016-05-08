@@ -1,4 +1,4 @@
-package rubik.busqueda;
+/**package rubik.busqueda;
 
 import java.util.Collections;
 import java.util.HashMap;
@@ -30,3 +30,4 @@ public class BusquedaVoraz extends BusquedaPrimeroMejor {
         }
     }
 }
+*/

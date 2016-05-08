@@ -1,4 +1,4 @@
-package rubik.busqueda;
+/**package rubik.busqueda;
 
 import java.util.HashMap;
 import java.util.LinkedList;
@@ -31,3 +31,4 @@ public class BusquedaAEstrellaPI extends BusquedaHeuristica implements Busqueda 
     }
 
 }
+*/

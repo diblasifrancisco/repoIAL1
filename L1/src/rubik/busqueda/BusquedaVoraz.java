@@ -1,6 +1,8 @@
 package rubik.busqueda;
 
+import java.util.Collections;
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.Vector;
 
@@ -12,11 +14,12 @@ public class BusquedaVoraz extends BusquedaHeuristica implements Busqueda {
     listaAbierta = new LinkedList<NodoBusqueda>();
     Boolean solucionEncontrada = false;
     NodoBusqueda nodoSolucion = null;
+    //cargo nodo raiz
     NodoBusqueda nodoActual = new NodoBusqueda(inicial,null,null);
 		nodoActual.setProfundidad(0);
 		nodoActual.setCosto(0);
     nodoActual.setHeuristica(h.obtenerHeuristica(nodoActual));
-		//traza = new TrazaGenerica(nodoActual);
+    //traza = new TrazaGenerica(nodoActual);
     listaAbierta.add(nodoActual);
     while(!solucionEncontrada) {
       if(listaAbierta.size() == 0) {
@@ -37,8 +40,9 @@ public class BusquedaVoraz extends BusquedaHeuristica implements Busqueda {
 	}
 
     private void ordenarListaMenorHeuristica() {
-            /*completar ordenacion segun h */
+        Collections.sort(listaAbierta, c);
+            
+        }
 
     }
- 
 }

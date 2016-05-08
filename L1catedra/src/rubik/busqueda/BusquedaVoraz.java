@@ -1,5 +1,6 @@
 package rubik.busqueda;
 
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.Vector;
@@ -37,8 +38,7 @@ public class BusquedaVoraz extends BusquedaHeuristica implements Busqueda {
 	}
 
     private void ordenarListaMenorHeuristica() {
-            /*completar ordenacion segun h */
-
+        Collections.sort(listaAbierta, ComparadoresNodos.HEURISTICA);
     }
  
 }

@@ -7,6 +7,8 @@ package rubik.busqueda;
 
 import rubik.modelo.*;
 /**
+ * Consiste en contar la cantidad de casillas del cubo que no se encuentran en su posicion 
+ * y utilizar este numero como aproximacion heuristica.
  *
  * @author sam
  */

@@ -9,6 +9,9 @@ public class BusquedaVoraz extends BusquedaHeuristica implements Busqueda {
 
   public Vector<Operador> buscarSolucion(Estado inicial){
     /*inicio reporte de busqueda */
+   this.reporteInicioBusqueda();
+
+      
     listaCerrada = new HashMap<Estado, NodoBusqueda>();
     listaAbierta = new LinkedList<NodoBusqueda>();
     Boolean solucionEncontrada = false;
@@ -17,18 +20,37 @@ public class BusquedaVoraz extends BusquedaHeuristica implements Busqueda {
 		nodoActual.setProfundidad(0);
 		nodoActual.setCosto(0);
     nodoActual.setHeuristica(h.obtenerHeuristica(nodoActual));
-		//traza = new TrazaGenerica(nodoActual);
+		TrazaGenerica traza = new TrazaGenerica(nodoActual);
     listaAbierta.add(nodoActual);
     while(!solucionEncontrada) {
       if(listaAbierta.size() == 0) {
         break;
       }
       else {
-	//traza.imprimirInicioIteracion(listaAbierta);
-        /*  estrategia voraz en grafo con heurisitica  cambia la forma en que ordena la lista  */
+	traza.imprimirInicioIteracion(listaAbierta);  //muestro  estado de lista abirta al coienzo de la primer interación
+        nodoActual = listaAbierta.pollFirst();      /** tomo y elimino el primer elemento de la listal*/
+        reporteNodosExplorados();  //Antes de evaluar si el nodo es solución contabilizo nodos explorados
+        if(!listaCerrada.containsKey(nodoActual.getEstado())) {
+          if(nodoActual.getEstado().esFinal()) {
+            solucionEncontrada = true;
+            nodoSolucion = nodoActual;
+          }
+          else {
+            listaCerrada.put(nodoActual.getEstado(), nodoActual);
+            listaAbierta.addAll(expandirNodo(nodoActual));
+            ordenarListaMenorHeuristica();
+          }
+        }
       }
     }
     /*reportes de rendimiento */
+     // al terminar contabilizo nodos sobrantes con la clase RendimientoBusqueda
+    this.reporteNodosSobrantes(listaAbierta.size());
+    // Contabilizo tiempo al finalizar busqueda con la clase RendimientoBusqueda
+    this.reporteFinBusqueda();
+    System.out.println(this.getReporteCompleto());
+    
+    
     if(nodoSolucion == null) {
       return new Vector<Operador>();
     }

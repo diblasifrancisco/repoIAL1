@@ -31,7 +31,7 @@ public class BusquedaAEstrellaLimitada extends BusquedaHeuristica implements Bus
         NodoBusqueda nodoActual = new NodoBusqueda(inicial, null, null);
         nodoActual.setProfundidad(0);
         nodoActual.setCosto(0);
-        nodoActual.setHeuristica(heuristica1.obtenerHeuristica(nodoActual));
+        nodoActual.setHeuristica(h.obtenerHeuristica(nodoActual));
         //traza = new TrazaGenerica(nodoActual);
         listaAbierta.add(nodoActual);
         while (!solucionEncontrada) {
@@ -68,7 +68,7 @@ public class BusquedaAEstrellaLimitada extends BusquedaHeuristica implements Bus
             NodoBusqueda n = new NodoBusqueda(nodoPadre.getEstado().aplicarOperador(oper), nodoPadre, oper);
             n.setProfundidad(nodoPadre.getProfundidad() + 1);
             n.setCosto(nodoPadre.getCosto() + 1);
-            n.setHeuristica(heuristica1.obtenerHeuristica(n));
+            n.setHeuristica(h.obtenerHeuristica(n));
             if ((n.getCosto() + n.getHeuristica()) <= fLimite) {
                 if (!listaCerrada.containsKey(n.getEstado())) {
                     expandidos.add(n);

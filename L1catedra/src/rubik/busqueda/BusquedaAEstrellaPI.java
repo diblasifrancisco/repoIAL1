@@ -13,7 +13,7 @@ public class BusquedaAEstrellaPI extends BusquedaHeuristica implements Busqueda 
         reporteInicioBusqueda();
         Vector<Operador> caminoSolucion = null;
         boolean solucionEncontrada = false;
-        fActual = heuristica1.obtenerHeuristica(new NodoBusqueda(inicial, null, null));
+        fActual = h.obtenerHeuristica(new NodoBusqueda(inicial, null, null));
         while (!solucionEncontrada) {
             busquedapl.setValorFuncionEvaluacionLimite(fActual);
             caminoSolucion = busquedapl.buscarSolucion(inicial);

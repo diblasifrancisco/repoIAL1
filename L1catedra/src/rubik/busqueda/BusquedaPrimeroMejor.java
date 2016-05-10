@@ -45,6 +45,8 @@ public abstract class BusquedaPrimeroMejor extends BusquedaHeuristica implements
                 if (!listaCerrada.containsKey(nodoActual.getEstado())) {
                     if (nodoActual.getEstado().esFinal()) {
                         solucionEncontrada = true;
+                        //medida de rendimiento agregada
+                        this.setResultadoEncontrado(true);
                         nodoSolucion = nodoActual;
                     } else {
                         listaCerrada.put(nodoActual.getEstado(), nodoActual);

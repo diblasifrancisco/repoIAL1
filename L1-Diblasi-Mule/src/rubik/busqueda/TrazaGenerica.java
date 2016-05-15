@@ -12,18 +12,18 @@ import java.util.Vector;
 public class TrazaGenerica {
      //al crear una traza se imprime estado inicial que se le pasa al constructor  
      public TrazaGenerica (NodoBusqueda nodo){
-           System.out.println("\n/**** Accion: <estado,(costo g),(heuristica h), profundidad> ****/");
-           System.out.println("\n    Nodo raiz: " + toStringNodo(nodo));
+           //System.out.println("\n/**** Accion: <estado,(costo g),(heuristica h), profundidad> ****/");
+           //System.out.println("\n    Nodo raiz: " + toStringNodo(nodo));
      }
     //Despues de expander nodo evaluado
     public void imprimirFinalIteracion(NodoBusqueda actual, LinkedList<NodoBusqueda> sucesores){
-        System.out.println("Nodo expanido: " + toStringNodo(actual) + " \n" + 
-                           "        Hijos: " + toStringListaNodos(sucesores));
+       // System.out.println("Nodo expanido: " + toStringNodo(actual) + " \n" + 
+          //                 "        Hijos: " + toStringListaNodos(sucesores));
     }
     //Antes de sacar primer elemento de frontera
     public void imprimirInicioIteracion(LinkedList<NodoBusqueda> frontera){
-        System.out.println("\n" + 
-                           "     Frontera: " + toStringListaNodos(frontera));
+       // System.out.println("\n" + 
+            //               "     Frontera: " + toStringListaNodos(frontera));
     }
     //muestro información de un nodo dado
     //Accion: <estado,(costo g),(heuristica h), profundidad>    
